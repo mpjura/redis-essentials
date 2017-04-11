@@ -1,0 +1,10 @@
+{
+  "name": "redis-essentials",
+  "version": "1.0.0",
+  "description": "Redis Book Projects",
+  "author": "Mike Pjura",
+  "license": "MIT",
+  "dependencies": {
+    "redis": "^2.7.1"
+  }
+}
