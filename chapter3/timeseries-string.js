@@ -1,7 +1,7 @@
 'use strict';
 
 // Time Series class
-export default class TimeSeries {
+module.exports = class TimeSeries {
 	/**
 	 * Constructs the TimeSeries instance.
 	 *
@@ -77,7 +77,7 @@ export default class TimeSeries {
 	 */
 	insert(timestamp) {
 		// iterate over the granularity names
-		for (const name of this.granularities) {
+		for (const name in this.granularities) {
 			// get this granularity
 			const granularity = this.granularities[name];
 			// generate a key for the timestamp at this granularity
@@ -102,7 +102,7 @@ export default class TimeSeries {
 	_getKeyName(granularity, timestamp) {
 		const rounded = this._getRoundedTimestamp(timestamp, granularity.duration);
 
-		return `${namespace}:${granularity.name}:${rounded}`;
+		return `${this.namespace}:${granularity.name}:${rounded}`;
 	}
 
 	/**
@@ -116,6 +116,6 @@ export default class TimeSeries {
 	 * @return {Number}           Normalized timestamp.
 	 */
 	_getRoundedTimestamp(timestamp, duration) {
-		return Math.floor(timestamp / precision) * precision;
+		return Math.floor(timestamp / duration) * duration;
 	}
-}
+};
